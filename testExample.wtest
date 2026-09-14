@@ -1,9 +1,50 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
+describe "Roberto puede llevar un paquete que está pago en un camion que tiene un acoplado" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "roberto puede llevar" {
+    assert.equals(puenteDeBrooklyn.puedePasar(roberto, paquete), true)
   }
+
+}
+
+describe "Que neo con crédito no puede llevar un paquete que no está pago a la matrix." {
+  test "neo no puede llevar" {
+    paquete.noPagar()
+    assert.equals(matrix.puedePasar(neo, paquete), false)
+  }
+}
+
+
+describe "Test colecciones" {
+  test "eliminar mensajero"{
+    empresaDeMensajeria.despedir(roberto)
+    assert.equals(empresaDeMensajeria.mensajeros().size(), 2)
+  }
+
+  test "contratar mensajero"{
+    empresaDeMensajeria.despedir(roberto)
+    empresaDeMensajeria.contratarMensajero(roberto)
+    assert.equals(empresaDeMensajeria.mensajeros().size(), 3)
+  }
+
+  test "despido masivo"{
+    empresaDeMensajeria.despidoMasivo()
+    assert.equals(empresaDeMensajeria.mensajeros().size(), 0)
+  }
+
+  test "empresa es grande"{
+    empresaDeMensajeria.esGrande()
+    assert.equals(empresaDeMensajeria.esGrande(), true)
+  }
+
+  test "puede ser entregado por primero"{
+    assert.equals(empresaDeMensajeria.puedeSerEntregadoPorPrimero(puenteDeBrooklyn, paquete), true)
+  }
+
+  test "peso del ultimo mensajero"{
+    assert.equals(empresaDeMensajeria.pesoDelUltimoMensajero(), 95)
+  }
+  
 
 }
